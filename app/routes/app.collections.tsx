@@ -1,5 +1,5 @@
 import { json, type LoaderFunctionArgs } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { useLoaderData, useNavigate } from "@remix-run/react";
 import {
   Box,
   Button,
@@ -50,13 +50,24 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
   const data: CollectionsResp = await response.json();
   const collections =
-    data.data.collections.edges?.map((edge) => edge.node) ?? [];
+    data.data.collections.edges?.map((edge) => ({
+      ...edge.node,
+      id: edge.node.id.split("/").at(-1),
+    })) ?? [];
   return json({ collections });
 }
 
 const Collections = () => {
   const { collections } = useLoaderData<typeof loader>() as {
     collections: Node[];
+  };
+
+  const navigate = useNavigate();
+  const navigateToEdit = (id: string) => {
+    navigate(`/app/collections/${id}/edit`);
+  };
+  const navigateToProducts = (id: string) => {
+    navigate(`/app/collections/${id}/products`);
   };
 
   const rowMarkup = collections.map(({ id, title, description }, index) => (
@@ -74,8 +85,20 @@ const Collections = () => {
 
       <IndexTable.Cell>
         <Box>
-          <Button>Edit</Button>
-          <Button>Products</Button>
+          <Button
+            onClick={() => {
+              navigateToEdit(id);
+            }}
+          >
+            Edit
+          </Button>
+          <Button
+            onClick={() => {
+              navigateToProducts(id);
+            }}
+          >
+            Products
+          </Button>
         </Box>
       </IndexTable.Cell>
     </IndexTable.Row>
