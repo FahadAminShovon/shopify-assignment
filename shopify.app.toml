@@ -2,7 +2,7 @@
 
 name = "sp-assignment-1"
 client_id = "f9d65a3afffd8a836deaa6474a17130e"
-application_url = "https://pixel-cemetery-stem-carl.trycloudflare.com"
+application_url = "https://si-coffee-playstation-jurisdiction.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,10 +11,10 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://pixel-cemetery-stem-carl.trycloudflare.com/auth/callback",
-  "https://pixel-cemetery-stem-carl.trycloudflare.com/auth/shopify/callback",
-  "https://pixel-cemetery-stem-carl.trycloudflare.com/api/auth/callback",
-  "https://pixel-cemetery-stem-carl.trycloudflare.com/.shopify/graphiql/auth/callback"
+  "https://si-coffee-playstation-jurisdiction.trycloudflare.com/auth/callback",
+  "https://si-coffee-playstation-jurisdiction.trycloudflare.com/auth/shopify/callback",
+  "https://si-coffee-playstation-jurisdiction.trycloudflare.com/api/auth/callback",
+  "https://si-coffee-playstation-jurisdiction.trycloudflare.com/.shopify/graphiql/auth/callback"
 ]
 
 [webhooks]

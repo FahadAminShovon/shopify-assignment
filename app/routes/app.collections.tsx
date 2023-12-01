@@ -89,20 +89,22 @@ const Collections = () => {
 
       <IndexTable.Cell>
         <Box>
-          <Button
-            onClick={() => {
-              navigateToEdit(id);
-            }}
-          >
-            Edit
-          </Button>
-          <Button
-            onClick={() => {
-              navigateToProducts(id);
-            }}
-          >
-            Products
-          </Button>
+          <div className="flex gap-2">
+            <Button
+              onClick={() => {
+                navigateToEdit(id);
+              }}
+            >
+              Edit
+            </Button>
+            <Button
+              onClick={() => {
+                navigateToProducts(id);
+              }}
+            >
+              Products
+            </Button>
+          </div>
         </Box>
       </IndexTable.Cell>
     </IndexTable.Row>

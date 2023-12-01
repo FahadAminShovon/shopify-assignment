@@ -1,6 +1,14 @@
 import type { LoaderFunctionArgs } from "@remix-run/node";
 import { useLoaderData, useNavigate, useParams } from "@remix-run/react";
-import { Button, Card, IndexTable, Layout, Page, Text } from "@shopify/polaris";
+import {
+  Box,
+  Button,
+  Card,
+  IndexTable,
+  Layout,
+  Page,
+  Text,
+} from "@shopify/polaris";
 import React from "react";
 import { authenticate } from "~/shopify.server";
 
@@ -54,7 +62,10 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
       },
     },
   } = (await response.json()) as CollectionsResp;
-  const products = edges?.map((edge) => edge.node);
+  const products = edges?.map((edge) => ({
+    ...edge.node,
+    id: edge.node.id.split("/").at(-1),
+  }));
   return { products };
 }
 
@@ -67,6 +78,13 @@ const Product = () => {
   const navigateToCreatePage = () => {
     navigate(`/app/collections/${params.collectionId}/product/create`);
   };
+
+  const navigateToEditPage = (productId: string) => {
+    navigate(
+      `/app/collections/${params.collectionId}/product/${productId}/edit`
+    );
+  };
+
   const rowMarkup = products.map(({ id, title, description }, index) => (
     <IndexTable.Row id={id} key={id} position={index}>
       <IndexTable.Cell>
@@ -78,6 +96,19 @@ const Product = () => {
         <Text variant="bodyMd" fontWeight="bold" as="span">
           {description}
         </Text>
+      </IndexTable.Cell>
+      <IndexTable.Cell>
+        <Box>
+          <div className="flex gap-2">
+            <Button
+              onClick={() => {
+                navigateToEditPage(id);
+              }}
+            >
+              Edit
+            </Button>
+          </div>
+        </Box>
       </IndexTable.Cell>
     </IndexTable.Row>
   ));
@@ -95,7 +126,11 @@ const Product = () => {
           <Card>
             <IndexTable
               selectable={false}
-              headings={[{ title: "Name" }, { title: "Description" }]}
+              headings={[
+                { title: "Name" },
+                { title: "Description" },
+                { title: "Actions" },
+              ]}
               itemCount={products.length}
             >
               {rowMarkup}
