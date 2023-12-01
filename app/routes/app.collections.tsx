@@ -70,6 +70,10 @@ const Collections = () => {
     navigate(`/app/collections/${id}/products`);
   };
 
+  const navigateToCreate = () => {
+    navigate("/app/collection/create");
+  };
+
   const rowMarkup = collections.map(({ id, title, description }, index) => (
     <IndexTable.Row id={id} key={id} position={index}>
       <IndexTable.Cell>
@@ -108,6 +112,11 @@ const Collections = () => {
     <Page>
       <ui-title-bar title="Collections" />
       <Layout>
+        <Layout.Section>
+          <div className="flex justify-end">
+            <Button onClick={navigateToCreate}>Create</Button>
+          </div>
+        </Layout.Section>
         <Layout.Section variant="fullWidth">
           <Card>
             <IndexTable

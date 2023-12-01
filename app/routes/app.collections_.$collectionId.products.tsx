@@ -1,6 +1,6 @@
 import type { LoaderFunctionArgs } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
-import { Card, IndexTable, Layout, Page, Text } from "@shopify/polaris";
+import { useLoaderData, useNavigate, useParams } from "@remix-run/react";
+import { Button, Card, IndexTable, Layout, Page, Text } from "@shopify/polaris";
 import React from "react";
 import { authenticate } from "~/shopify.server";
 
@@ -60,6 +60,13 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
 
 const Product = () => {
   const { products } = useLoaderData<typeof loader>() as { products: Node[] };
+
+  const navigate = useNavigate();
+  const params = useParams();
+
+  const navigateToCreatePage = () => {
+    navigate(`/app/collections/${params.collectionId}/product/create`);
+  };
   const rowMarkup = products.map(({ id, title, description }, index) => (
     <IndexTable.Row id={id} key={id} position={index}>
       <IndexTable.Cell>
@@ -79,6 +86,11 @@ const Product = () => {
     <Page>
       <ui-title-bar title="Products" />
       <Layout>
+        <Layout.Section>
+          <div className="flex justify-end">
+            <Button onClick={navigateToCreatePage}>Create</Button>
+          </div>
+        </Layout.Section>
         <Layout.Section variant="fullWidth">
           <Card>
             <IndexTable
