@@ -2,7 +2,7 @@
 
 name = "sp-assignment-1"
 client_id = "f9d65a3afffd8a836deaa6474a17130e"
-application_url = "https://itself-notice-firmware-leave.trycloudflare.com"
+application_url = "https://veterans-antenna-pacific-destination.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,10 +11,10 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://itself-notice-firmware-leave.trycloudflare.com/auth/callback",
-  "https://itself-notice-firmware-leave.trycloudflare.com/auth/shopify/callback",
-  "https://itself-notice-firmware-leave.trycloudflare.com/api/auth/callback",
-  "https://itself-notice-firmware-leave.trycloudflare.com/.shopify/graphiql/auth/callback"
+  "https://veterans-antenna-pacific-destination.trycloudflare.com/auth/callback",
+  "https://veterans-antenna-pacific-destination.trycloudflare.com/auth/shopify/callback",
+  "https://veterans-antenna-pacific-destination.trycloudflare.com/api/auth/callback",
+  "https://veterans-antenna-pacific-destination.trycloudflare.com/.shopify/graphiql/auth/callback"
 ]
 
 [webhooks]
