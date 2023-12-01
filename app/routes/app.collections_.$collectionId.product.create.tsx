@@ -1,4 +1,4 @@
-import { Layout, Page } from "@shopify/polaris";
+import { Card, Layout, Page } from "@shopify/polaris";
 import React from "react";
 import CreateEditForm from "~/components/CreateEditForm";
 
@@ -8,7 +8,9 @@ const CreateProduct = () => {
       <ui-title-bar title="Create Product" />
       <Layout>
         <Layout.Section>
-          <CreateEditForm buttonText="Create" />
+          <Card>
+            <CreateEditForm buttonText="Create" />
+          </Card>
         </Layout.Section>
       </Layout>
     </Page>

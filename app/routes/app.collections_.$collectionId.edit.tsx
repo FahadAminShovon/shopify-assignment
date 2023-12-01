@@ -45,10 +45,9 @@ export async function action({ request, params }: ActionFunctionArgs) {
   const description = formData.get("description");
   const collectionId = `gid://shopify/Collection/${params.collectionId}`;
 
-  console.log(title, description);
   await admin.graphql(
     `#graphql
-  mutation updateCollectionHandle($id:ID!, $title: String!, $description: String ) {
+ 	mutation updateCollectionHandle($id:ID!, $title: String!, $description: String ) {
     collectionUpdate(input: {id: $id, title:$title, descriptionHtml: $description }) {
       collection {
         id

@@ -25,12 +25,14 @@ const CreateEditForm = ({
         onChange={(val) => {
           setTitle(val);
         }}
+        placeholder="Enter title"
       />
       <TextField
         name="description"
         label="Description"
         autoComplete="false"
         value={description}
+        placeholder="Enter description"
         onChange={(val) => {
           setDescription(val);
         }}
