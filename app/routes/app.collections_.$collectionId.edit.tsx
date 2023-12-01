@@ -1,8 +1,8 @@
 import { json, redirect } from "@remix-run/node";
 import type { ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
-import { Form, useLoaderData } from "@remix-run/react";
-import { Button, Card, Layout, Page, TextField } from "@shopify/polaris";
-import React, { useState } from "react";
+import { useLoaderData } from "@remix-run/react";
+import { Card, Layout, Page } from "@shopify/polaris";
+import CreateEditForm from "~/components/CreateEditForm";
 import { authenticate } from "~/shopify.server";
 
 export interface CollectionDataResp {
@@ -76,49 +76,16 @@ export async function action({ request, params }: ActionFunctionArgs) {
 }
 
 const Edit = () => {
-  const { title: defaultTitle, description: defaultDescription } =
-    useLoaderData<typeof loader>();
-  const [title, setTitle] = useState(defaultTitle);
-  const [description, setDescription] = useState(defaultDescription);
+  const { title, description } = useLoaderData<typeof loader>();
   return (
     <Page>
-      <Layout></Layout>
       <Layout.Section>
         <Card>
-          <Form
-            method="POST"
-            style={{ display: "flex", flexDirection: "column", gap: 8 }}
-          >
-            <TextField
-              name="title"
-              label="Title"
-              autoComplete="false"
-              value={title}
-              onChange={(val) => {
-                setTitle(val);
-              }}
-            />
-            <TextField
-              name="description"
-              label="Description"
-              autoComplete="false"
-              value={description}
-              onChange={(val) => {
-                setDescription(val);
-              }}
-            />
-            <div
-              style={{
-                display: "flex",
-                marginTop: 8,
-                justifyContent: "flex-end",
-              }}
-            >
-              <Button variant="primary" submit>
-                Update
-              </Button>
-            </div>
-          </Form>
+          <CreateEditForm
+            defaultTitle={title}
+            defaultDescription={description}
+            buttonText="Update"
+          />
         </Card>
       </Layout.Section>
     </Page>

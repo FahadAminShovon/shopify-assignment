@@ -2,7 +2,7 @@
 
 name = "sp-assignment-1"
 client_id = "f9d65a3afffd8a836deaa6474a17130e"
-application_url = "https://si-coffee-playstation-jurisdiction.trycloudflare.com"
+application_url = "https://dec-mentioned-newly-arctic.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,10 +11,10 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://si-coffee-playstation-jurisdiction.trycloudflare.com/auth/callback",
-  "https://si-coffee-playstation-jurisdiction.trycloudflare.com/auth/shopify/callback",
-  "https://si-coffee-playstation-jurisdiction.trycloudflare.com/api/auth/callback",
-  "https://si-coffee-playstation-jurisdiction.trycloudflare.com/.shopify/graphiql/auth/callback"
+  "https://dec-mentioned-newly-arctic.trycloudflare.com/auth/callback",
+  "https://dec-mentioned-newly-arctic.trycloudflare.com/auth/shopify/callback",
+  "https://dec-mentioned-newly-arctic.trycloudflare.com/api/auth/callback",
+  "https://dec-mentioned-newly-arctic.trycloudflare.com/.shopify/graphiql/auth/callback"
 ]
 
 [webhooks]
